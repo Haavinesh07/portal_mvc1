@@ -1,0 +1,39 @@
+CREATE DATABASE IF NOT EXISTS student_portal_db
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE student_portal_db;
+
+DROP TABLE IF EXISTS student_grades;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    nric VARCHAR(12) NOT NULL UNIQUE,
+    program VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    profile_picture VARCHAR(255) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE student_grades (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    ic VARCHAR(12) NOT NULL UNIQUE,
+    marks TINYINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT chk_student_marks CHECK (marks BETWEEN 0 AND 100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO users (name, nric, program, password) VALUES
+('haavinesh', '010515084455', 'JTMK', '$2y$10$YwY1YNl.xryPiyIveEg3tO9Nj5CPyTqE15AhI6ZJufJi4jSlJSq82'),
+('jeevan', '020310075543', 'JTMK', '$2y$10$YwY1YNl.xryPiyIveEg3tO9Nj5CPyTqE15AhI6ZJufJi4jSlJSq82'),
+('somesvaran', '030101146688', 'JKE', '$2y$10$YwY1YNl.xryPiyIveEg3tO9Nj5CPyTqE15AhI6ZJufJi4jSlJSq82');
+
+INSERT INTO student_grades (name, ic, marks) VALUES
+('haavinesh', '010515084455', 85),
+('jeevan', '020310075543', 78),
+('somesvaran', '030101146688', 92);

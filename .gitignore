@@ -1,0 +1,7 @@
+/vendor/
+php-server.*.log
+/uploads/profile_pictures/*
+!/uploads/profile_pictures/.gitkeep
+!/uploads/profile_pictures/.htaccess
+/report_assets/
+/report_rendered/

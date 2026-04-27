@@ -1,0 +1,16 @@
+{
+    "name": "portal/mvc",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fareez",
+            "email": "fare4z@gmail.com"
+        }
+    ],
+    "require": {}
+}
+
